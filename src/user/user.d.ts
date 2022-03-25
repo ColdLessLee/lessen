@@ -5,3 +5,7 @@ declare namespace USER_FORM {
     email?: string
   }
 }
+interface ResponseDATA {
+  data: Record<string, unknown>
+  meta: { status: number; msg: string }
+}
