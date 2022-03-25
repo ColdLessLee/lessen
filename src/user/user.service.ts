@@ -1,14 +1,14 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { users } from './userlist';
+import { Injectable, Logger } from '@nestjs/common'
+import { users } from './userlist'
 @Injectable()
 export class UserService {
   login(req: USER_FORM.loginForm): string {
-    Logger.log(req);
+    Logger.log(req)
 
     users.forEach((v) => {
-      Logger.log(v);
-    });
+      Logger.log(v)
+    })
 
-    return 'login success!';
+    return 'login success!'
   }
 }
