@@ -1,25 +1,36 @@
 import { Injectable } from '@nestjs/common'
 import { Logger } from '@nestjs/common'
+import { OrderDTO } from './order_dto/order.dto'
 
-function createOrderResponse(): ORDER_RIDER.OrderData {
+// const oreq = {
+//   trance:'test'
+// }
+type OrderData = {
+  timestamp: string
+  arriveCity: string
+  orderState: number
+}[]
+
+function createOrderResponse(): OrderData {
   return Array.from({ length: 10 }, (_, index) =>
     Object({
       timestamp: `${new Date().getTime()}`,
       city: 'Guangzhou',
       country: 'China',
       status: Math.floor(Math.random() * 5),
-      trance: `${
-        new Date().getTime() + index * Math.round(Math.random() * 10000)
-      }`,
-      info: `这是${index}号描述`,
+      info: `这是第${index}条描述`,
     }),
   )
 }
 
 @Injectable()
 export class OrderService {
-  getOrderState(req: ORDER_RIDER.Order_Form): ORDER_RIDER.OrderData {
+  getOrderState(req: OrderDTO): Record<string, unknown> {
     Logger.log(req)
-    return createOrderResponse()
+    return {
+      id: req.id,
+      name: req.name,
+      trance_info: createOrderResponse(),
+    }
   }
 }

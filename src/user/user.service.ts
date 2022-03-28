@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { users } from './userlist'
+import { UserDTO } from './user_dto/user.dto'
 
 function createResponse(param: string): ResponseDATA {
   switch (param) {
@@ -17,7 +18,7 @@ function createResponse(param: string): ResponseDATA {
  */
 @Injectable()
 export class UserService {
-  login(req: USER_FORM.loginForm): ResponseDATA {
+  login(req: UserDTO): ResponseDATA {
     let state: ResponseDATA = createResponse('f')
     const key = req.username
     users.forEach((v) => {
