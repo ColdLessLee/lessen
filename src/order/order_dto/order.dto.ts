@@ -1,4 +1,10 @@
 export class OrderDTO {
-  id: string
-  name: string
+  trance: {
+    id: string
+    name: string
+  }
+  order_list: {
+    user?: string
+    id: string
+  }
 }
