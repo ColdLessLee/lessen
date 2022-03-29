@@ -5,7 +5,7 @@ import { AppModule } from './app.module'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   app.enableCors()
-  await app.listen(8080)
-  Logger.log('on http://192.168.13.98:8080')
+  await app.listen(3000)
+  Logger.log('on http://192.168.13.98:3000')
 }
 bootstrap()

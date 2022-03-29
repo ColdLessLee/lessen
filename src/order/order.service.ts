@@ -66,7 +66,7 @@ export class OrderService {
   }
   getOrderList(req: OrderDTO['order_list']) {
     console.log(req)
-    return createOrderListResponse(req.user, req.id, 100)
+    return createOrderListResponse(req.user, req.id, 50)
   }
   searchOrder(req: OrderDTO['order_list']) {
     console.log(req)
