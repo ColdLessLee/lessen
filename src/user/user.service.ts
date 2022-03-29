@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { users, USERS } from './userlist'
 import { UserDTO } from './user_dto/user.dto'
+import { DataService } from '../database/database.service'
+import { Prisma, Users } from '@prisma/client'
 
 function createResponse(
   param: string,
@@ -29,6 +31,18 @@ function createResponse(
  */
 @Injectable()
 export class UserService {
+  constructor(private dataService: DataService) {}
+
+  async userac(req: Prisma.UsersSelect): Promise<any> {
+    console.log(req)
+
+    return this.dataService.users.findUnique({
+      where: {
+        username: 'test@test.com',
+      },
+    })
+  }
+
   login(req: UserDTO): ResponseDATA {
     console.log(req)
     let state: ResponseDATA = createResponse('f')

@@ -9,4 +9,8 @@ export class UserContoller {
   login(@Body() req: UserDTO) {
     return this.userService.login(req)
   }
+  @Post('udata')
+  testDB(@Body() req: any) {
+    return this.userService.userac(req)
+  }
 }

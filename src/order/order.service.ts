@@ -12,7 +12,10 @@ type OrderList = Record<string, string | number | Record<string, string>[]>[]
 function createOrderStateResponse(): OrderState {
   return Array.from({ length: 10 }, (_, index) =>
     Object({
-      timestamp: `${new Date().getTime()}`,
+      timestamp: `${
+        new Date().getTime() +
+        Math.floor(Math.random() * 86400000) * Math.floor(Math.random() * 7 + 1)
+      }`,
       city: 'Guangzhou',
       country: 'China',
       status: Math.floor(Math.random() * 5),
@@ -66,7 +69,7 @@ export class OrderService {
   }
   getOrderList(req: OrderDTO['order_list']) {
     console.log(req)
-    return createOrderListResponse(req.user, req.id, 50)
+    return createOrderListResponse(req.user, req.id, 20)
   }
   searchOrder(req: OrderDTO['order_list']) {
     console.log(req)
