@@ -9,7 +9,9 @@ datasource db {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model Users {
-  username    String @db.VarChar(14) @id @unique
-  password    String? @db.VarChar(16) @unique
-  TOKEN_SCRIY String? @db.VarChar(100) @unique
+  username     String  @id @unique @db.VarChar(16)
+  password     String? @db.VarChar(18)
+  token        String? @unique @db.VarChar(100)
+  secret_key   String? @unique @db.VarChar(100)
+  jurisdiction String? @db.VarChar(100)
 }

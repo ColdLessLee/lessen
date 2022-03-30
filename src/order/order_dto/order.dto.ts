@@ -7,4 +7,9 @@ export class OrderDTO {
     user?: string
     id: string
   }
+  contract: {
+    user: string
+    id: string
+    image: any
+  }
 }

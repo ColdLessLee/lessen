@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { Logger } from '@nestjs/common'
 import { OrderDTO } from './order_dto/order.dto'
-
+import { Express } from 'express'
 // const oreq = {
 //   trance:'test'
 // }
@@ -69,7 +69,7 @@ export class OrderService {
   }
   getOrderList(req: OrderDTO['order_list']) {
     console.log(req)
-    return createOrderListResponse(req.user, req.id, 20)
+    return createOrderListResponse(req.user, req.id, 200)
   }
   searchOrder(req: OrderDTO['order_list']) {
     console.log(req)
@@ -99,5 +99,10 @@ export class OrderService {
         goods_id: req.id,
       }),
     )
+  }
+  uploadContract(req: Express.Multer.File) {
+    console.log(req)
+    if (req == void 0) return { msg: 'upload fail' }
+    return { data: req, msg: 'upload success' }
   }
 }
