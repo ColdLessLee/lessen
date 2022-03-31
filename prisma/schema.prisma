@@ -9,9 +9,36 @@ datasource db {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model Users {
-  username     String  @id @unique @db.VarChar(16)
-  password     String? @db.VarChar(18)
-  token        String? @unique @db.VarChar(100)
-  secret_key   String? @unique @db.VarChar(100)
-  jurisdiction String? @db.VarChar(100)
+  username     String  @unique @db.VarChar(16)
+  password     String @db.VarChar(18)
+  token        String @unique @db.VarChar(100)
+  secret_key   String @unique @db.VarChar(100)
+  jurisdiction String @db.VarChar(100)
+  user_id           String  @unique @id @db.VarChar(24) @default("")
+}
+
+model OrdersMain {
+  main_id String @unique @db.VarChar(255) @id @default("")
+  createTime String @db.VarChar(255)
+  totalPrice Float @db.Double
+  customName String @db.VarChar(255)
+  customAdress String @db.VarChar(255)
+  customPhone String @db.VarChar(255)
+  additonDemo String @db.VarChar(255)
+
+}
+
+model OrdersSecond {
+  main_id String @db.VarChar(255) @unique
+  second_id String @id @db.VarChar(255) @unique @default("")
+  order_product_name String @db.VarChar(255)
+  order_product_price Float @db.Double
+  order_product_number BigInt @db.BigInt
+}
+
+model OrderProduction{
+  product_id String @db.VarChar(255) @id @unique @default("")
+  product_info String @db.VarChar(255)
+  product_name String @db.VarChar(255)
+  product_price String @db.VarChar(255)
 }

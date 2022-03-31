@@ -1,10 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { Logger } from '@nestjs/common'
 import { OrderDTO } from './order_dto/order.dto'
-import { Express } from 'express'
-// const oreq = {
-//   trance:'test'
-// }
+
 type OrderState = Record<string, string | number>[]
 type OrderList = Record<string, string | number | Record<string, string>[]>[]
 //order state
@@ -100,9 +97,11 @@ export class OrderService {
       }),
     )
   }
-  uploadContract(req: Express.Multer.File) {
+  uploadContract<T>(req: T): Record<string, string | T> {
     console.log(req)
-    if (req == void 0) return { msg: 'upload fail' }
     return { data: req, msg: 'upload success' }
+  }
+  async getCountry(): Promise<boolean> {
+    return true
   }
 }
